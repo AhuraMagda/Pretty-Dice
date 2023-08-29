@@ -1,10 +1,10 @@
 import "./D6.css"
 import React from "react"
 
-
 type D6Props = {
     id: Number, 
-    key: Number
+    key: Number,
+    isHeld?: boolean
 }
 
 function D6(props: D6Props) {
