@@ -30,8 +30,9 @@ function RollDice() {
     document.documentElement.style.setProperty('--bg-color-6', 'pink');
   }
     return (
-        <div className="roll-dice">
+        <div className="game-container roll-dice">
             <h1>Roll dice</h1>
+            <p>Click on the die or roll all with a button</p>
             <div className='dice-container'>
                 {allTheDice}
             </div>

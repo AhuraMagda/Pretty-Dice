@@ -13,8 +13,16 @@ main {
   justify-content: center;
 }
 
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .dice-container {
   display: grid;
+  justify-content: center;
+  align-items: center;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
 }
@@ -27,23 +35,13 @@ main {
 @media screen and (min-width: 350px) {
   .dice-container {
     grid-template-columns: repeat(2, 1fr);
+    width: 80%;
   }
 }
 
-@media screen and (min-width: 700px) {
-  .dice-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 600px) {
   .dice-container {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media screen and (min-width: 1300px) {
-  .dice-container {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}

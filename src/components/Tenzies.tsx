@@ -3,7 +3,7 @@ import React from "react";
 
 function Tenzies() {
 
-    const [sides, setSides] = React.useState(["0","1","2","3","4","5","6","7","8"])
+    const [sides, setSides] = React.useState(["0","1","2","3","4","5","6","7"])
 
 
     const handleSideChange = (newSide: string, id: number) => {
@@ -12,7 +12,7 @@ function Tenzies() {
 
     const makeNewDice = () => {
         const randomDiceArray = [];
-        for (let i=0; i < 9; i++) {
+        for (let i=0; i < 8; i++) {
             randomDiceArray.push(<D6 key={i} id={i} changeSide={handleSideChange}/>)
         }   
         return randomDiceArray
@@ -38,13 +38,14 @@ function Tenzies() {
     }
 
     return (
-        <div className="tenzies">
+        <div className="game-container tenzies">
             <h1>Tenzies</h1>
+            {!tenzies && <p>Click on the die untill all the dies are the same</p>}
             {tenzies && <h2>TENZIES! You Won</h2>}
             <div className="dice-container">
                 {allTheDice}
             </div>
-            {tenzies && <button className="tenzies-new" onClick={newGame}>new</button>}
+            {tenzies && <button className="tenzies-new" onClick={newGame}>New Game</button>}
         </div>
     )
 }
