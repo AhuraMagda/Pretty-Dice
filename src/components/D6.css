@@ -26,7 +26,8 @@
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.45s; 
-    width: var(--height)
+    width: var(--height);
+    justify-self: center;
   }
 
 
