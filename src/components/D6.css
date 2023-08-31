@@ -22,7 +22,7 @@
 /* Dice container */
 .dice {
     height: var(--height);
-    margin: 50px;
+    margin: 20px;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.45s; 

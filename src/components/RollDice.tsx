@@ -1,7 +1,7 @@
 
 import React from "react"
 import D6 from "./D6"
-
+import "./RollDice.css"
 
 
 function RollDice() {

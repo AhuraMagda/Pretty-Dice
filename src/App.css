@@ -24,7 +24,7 @@ main {
 }
 
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 350px) {
   .dice-container {
     grid-template-columns: repeat(2, 1fr);
   }
