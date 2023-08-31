@@ -2,16 +2,17 @@ import "./D6.css"
 import React from "react"
 
 type D6Props = {
-    id: Number, 
-    key: Number,
-    isHeld?: boolean
+    id: number, 
+    key: number,
+    isHeld?: boolean,
+    changeSide?: (newSide: string, id: number) => void
 }
 
 function D6(props: D6Props) {
-    const sides = ['show-top', 'show-bottom', 'show-right', 'show-left', 'show-front', 'show-back']
+    const sides = ['show-5', 'show-6', 'show-4', 'show-3', 'show-1', 'show-2']
 
     const [randomSide, setRandomSide] = React.useState(sides[Math.floor(Math.random()*sides.length)]);
-
+    
     const changeSide = () => {
         let newRandomSide = sides[Math.floor(Math.random()*sides.length)]
         while (newRandomSide === randomSide) {
@@ -23,19 +24,15 @@ function D6(props: D6Props) {
     const roll = () => {
         changeSide()
         setTimeout(() => {changeSide();}, 500);
-        setTimeout(() => {changeSide();}, 1000);
-        setTimeout(() => {changeSide();}, 1500);
-        setTimeout(() => {changeSide();}, 2000);
+        setTimeout(() => {changeSide();}, 900);
+        setTimeout(() => {changeSide();}, 1200);
+        setTimeout(() => {changeSide();}, 1600);
     }
 
-    // zamiana właściwości ale nie mogę dostać wysokości
-    // document.documentElement.style.setProperty('--half-height', '200px');
-    // document.documentElement.style.setProperty('--half-height', '100px');
-    // document.documentElement.style.setProperty('--quarter-height', '50px');
-    // document.documentElement.style.setProperty('--minus-quarter-height', '-50px');
+    React.useEffect(()=>{
+        props.changeSide && props.changeSide(randomSide, props.id)
+    }, [randomSide])
     
-
-
     return (
         <div className={`dice ${randomSide}`} id={(props.id).toString()}onClick={roll}>
             <div className="face front"></div>
