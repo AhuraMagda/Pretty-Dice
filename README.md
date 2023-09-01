@@ -6,4 +6,4 @@ A game that uses 3D dice. In progress...
 - TypeScript
 
 ## Links
-[pretty-dice.netlify.app](pretty-dice.netlify.app)
+[Pretty Dice Netlify](http://pretty-dice.netlify.app)
