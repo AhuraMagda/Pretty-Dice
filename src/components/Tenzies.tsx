@@ -4,7 +4,7 @@ import "./Tenzies.css"
 
 
 function Tenzies() {
-
+    console.log("Tenzies Component")
     const [sides, setSides] = React.useState(["0","1","2","3","4","5","6","7"])
 
     const [clickCount, setClickCount] = React.useState(0)
@@ -21,25 +21,39 @@ function Tenzies() {
         return randomDiceArray
       }
     
-    const allTheDice  = makeNewDice()
+    const allTheDice = makeNewDice()
     
     const [tenzies, setTenzies] = React.useState(false) 
 
-
     React.useEffect(()=> {
         const timeoutId = setTimeout(()=>{
-            const allSame = sides.every(side => side === sides[0])
-            allSame && setTenzies(true)
+            const allSame = sides.every(side => side === sides[0]);
+            allSame && setTenzies(true);
         }, 1000)
         return () => clearTimeout(timeoutId)
     }, [sides])
 
+   
+    React.useEffect(() => {
+        const diceToClick = document.querySelectorAll(".dice");
+        diceToClick.forEach((die) =>
+          die.addEventListener("click", () => setClickCount(prevCount => prevCount + 1))
+        );
+    
+        return () => {
+          diceToClick.forEach((die) =>
+            die.removeEventListener("click", () => setClickCount(prevCount => prevCount + 1))
+          );
+        };
+      }, []);
 
     const newGame = () => {
         const diceToClick = document.querySelectorAll(".dice")
         diceToClick.forEach(die => (die as HTMLElement).click())
         setTenzies(false)
     }
+
+
     
     const [playersOnTheBoard, setPlayersOnTheBoard] = React.useState([<p>Magda 31.08.2023</p>])
 

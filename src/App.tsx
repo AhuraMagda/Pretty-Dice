@@ -4,10 +4,8 @@ import RollDice from './components/RollDice'
 import Tenzies from './components/Tenzies'
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
-
 function App() {
-
-
+  console.log("APP Component")
   return (
     <main>
       <BrowserRouter>

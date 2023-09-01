@@ -5,7 +5,7 @@ import "./RollDice.css"
 
 
 function RollDice() {
-      
+  console.log("Roll Component")
   const [allTheDice, setAllTheDice] = React.useState([<D6 key={0} id={0}/>])
 
   const rollAll = () => {
