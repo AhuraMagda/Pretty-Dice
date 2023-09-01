@@ -5,7 +5,7 @@ import "./Tenzies.css"
 
 function Tenzies() {
     console.log("Tenzies Component")
-    const [sides, setSides] = React.useState(["0","1","2","3","4","5","6","7"])
+    const [sides, setSides] = React.useState(["0","1"])
 
     const [clickCount, setClickCount] = React.useState(0)
 
@@ -15,7 +15,7 @@ function Tenzies() {
 
     const makeNewDice = () => {
         const randomDiceArray = [];
-        for (let i=0; i < 8; i++) {
+        for (let i=0; i < 2; i++) {
             randomDiceArray.push(<D6 key={i} id={i} changeSide={handleSideChange}/>)
         }   
         return randomDiceArray
@@ -33,24 +33,12 @@ function Tenzies() {
         return () => clearTimeout(timeoutId)
     }, [sides])
 
-   
-    React.useEffect(() => {
-        const diceToClick = document.querySelectorAll(".dice");
-        diceToClick.forEach((die) =>
-          die.addEventListener("click", () => setClickCount(prevCount => prevCount + 1))
-        );
-    
-        return () => {
-          diceToClick.forEach((die) =>
-            die.removeEventListener("click", () => setClickCount(prevCount => prevCount + 1))
-          );
-        };
-      }, []);
 
     const newGame = () => {
         const diceToClick = document.querySelectorAll(".dice")
         diceToClick.forEach(die => (die as HTMLElement).click())
         setTenzies(false)
+        setClickCount(0)
     }
 
 
@@ -76,6 +64,22 @@ function Tenzies() {
         const { value } = event.target       
         setPlayerName(value)
     }
+    
+    React.useEffect(() => {
+        const clickHandler = () => {
+            setClickCount(prevCount => prevCount + 1)
+        }
+
+        if (!tenzies) {   
+            const diceToClick = document.querySelectorAll(".dice");
+            diceToClick.forEach((die) => die.addEventListener("click", clickHandler));
+            diceToClick.forEach(die=>console.log(die))
+        } else {     
+            const diceToClick = document.querySelectorAll(".dice");
+            diceToClick.forEach((die) => die.removeEventListener("click", clickHandler));
+            diceToClick.forEach(die=>console.log(die))
+        }
+    }, [tenzies]);
 
     // Players Board
     return (
@@ -83,7 +87,7 @@ function Tenzies() {
             <h1>Tenzies</h1>
             {!tenzies && <p>Click on the die untill all the dies are the same</p>}
             {tenzies && <h2>TENZIES! You Won</h2>}
-            <h2>Your moves: {clickCount}</h2>
+            <h2>Your moves (for now it is what it is): {clickCount}</h2>
             <div className="dice-container">
                 {allTheDice}
             </div>
