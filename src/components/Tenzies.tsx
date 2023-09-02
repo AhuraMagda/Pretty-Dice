@@ -5,7 +5,7 @@ import "./Tenzies.css"
 
 function Tenzies() {
     console.log("Tenzies Component")
-    const [sides, setSides] = React.useState(["0","1"])
+    const [sides, setSides] = React.useState(["0","1", "2", "3", "4", "5", "6", "7"])
 
     const [clickCount, setClickCount] = React.useState(0)
 
@@ -15,7 +15,7 @@ function Tenzies() {
 
     const makeNewDice = () => {
         const randomDiceArray = [];
-        for (let i=0; i < 2; i++) {
+        for (let i=0; i < 8; i++) {
             randomDiceArray.push(<D6 key={i} id={i} changeSide={handleSideChange}/>)
         }   
         return randomDiceArray
