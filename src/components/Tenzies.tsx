@@ -69,17 +69,11 @@ function Tenzies() {
         const clickHandler = () => {
             setClickCount(prevCount => prevCount + 1)
         }
+        const diceToClick = document.querySelectorAll(".dice");
+        diceToClick.forEach((die) => die.addEventListener("click", clickHandler));
+        diceToClick.forEach(die=>console.log(die))
 
-        if (!tenzies) {   
-            const diceToClick = document.querySelectorAll(".dice");
-            diceToClick.forEach((die) => die.addEventListener("click", clickHandler));
-            diceToClick.forEach(die=>console.log(die))
-        } else {     
-            const diceToClick = document.querySelectorAll(".dice");
-            diceToClick.forEach((die) => die.removeEventListener("click", clickHandler));
-            diceToClick.forEach(die=>console.log(die))
-        }
-    }, [tenzies]);
+    }, []);
 
     // Players Board
     return (
