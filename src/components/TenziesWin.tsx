@@ -1,8 +1,7 @@
 
 import React, { ChangeEvent } from "react";
-
-
-
+import { addDoc, onSnapshot } from 'firebase/firestore'
+import { usersCollection } from "../firebase"
 
 function TenziesWin({onUpdateTenzies, clickCount}: any) {
 
@@ -12,9 +11,12 @@ function TenziesWin({onUpdateTenzies, clickCount}: any) {
         onUpdateTenzies(false)
     }
 
-    const [playersOnTheBoard, setPlayersOnTheBoard] = React.useState([<p>Magda 31.08.2023</p>])
-
     const [playerName, setPlayerName] = React.useState("")
+
+    const handlePlayerName = (event: ChangeEvent<HTMLInputElement>) => {
+        const { value } = event.target       
+        setPlayerName(value)
+    }
 
     const date = new Date();
     let currentDay= String(date.getDate()).padStart(2, '0');
@@ -22,17 +24,47 @@ function TenziesWin({onUpdateTenzies, clickCount}: any) {
     let currentYear = date.getFullYear();
     let currentDate = ` ${currentDay}.${currentMonth}.${currentYear}`;
 
+    const [playersOnTheBoard, setplayersOnTheBoard] = React.useState("")
+
     const [isPlayerOnTheBoard, setIsPlayerOnTheBoard] = React.useState(false)
 
-    const writeNewPlayer = () => {
-        setPlayersOnTheBoard(prevPlayers => [...prevPlayers, <p>{playerName}{currentDate}{clickCount}</p>])
+
+
+    // const docRef = doc(db, "tenziesscore", "SF")
+    // const docSnap = await getDoc(docRef)
+
+    async function addNewPlayer() {
+        const newPlayer = {
+            name: playerName,
+            score: clickCount,
+            date: currentDate
+        }
+        await addDoc(usersCollection, newPlayer)
         setIsPlayerOnTheBoard(true)
     }
 
-    const handlePlayerName = (event: ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target       
-        setPlayerName(value)
-    }
+
+    React.useEffect(()=>{
+        const unsubscribe = onSnapshot(usersCollection, function(snapshot){
+            console.log("changed")
+             const usersArray = snapshot.docs.map(user=>({
+                ...user.data(),
+                id: user.id
+             }))
+             console.log(usersArray[0].name)
+
+             const players: string[] = []
+             usersArray.forEach(player => players.push(`name: ${player.name} score: ${player.score} date: ${player.date}`))
+
+             setplayersOnTheBoard(players)
+        })
+        return unsubscribe
+    }, [])
+
+    console.log(usersCollection)
+
+
+
 
     return (
         <>
@@ -44,7 +76,7 @@ function TenziesWin({onUpdateTenzies, clickCount}: any) {
                 {!isPlayerOnTheBoard && <div>
                     <label htmlFor="name">Name: </label>
                     <input type="text" id="name" value={playerName} onChange={handlePlayerName} />
-                    <button id="players-board__button" onClick={writeNewPlayer}>save</button>
+                    <button id="players-board__button" onClick={addNewPlayer}>save</button>
                 </div>}
                 <h2>Users that played:</h2>
                 {playersOnTheBoard}

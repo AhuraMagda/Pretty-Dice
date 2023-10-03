@@ -6,7 +6,7 @@ import TenziesWin from "./TenziesWin";
 import TenziesPlay from "./TenziesPlay";
 
 function Tenzies() {
-    const [tenzies, setTenzies] = React.useState(false) 
+    const [tenzies, setTenzies] = React.useState(true) 
 
     function updateTenzies(value: boolean) {
         setTenzies(value)
