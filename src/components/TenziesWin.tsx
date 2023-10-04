@@ -24,14 +24,8 @@ function TenziesWin({onUpdateTenzies, clickCount}: any) {
     let currentYear = date.getFullYear();
     let currentDate = ` ${currentDay}.${currentMonth}.${currentYear}`;
 
-    const [playersOnTheBoard, setplayersOnTheBoard] = React.useState("")
-
+    const [playersOnTheBoard, setPlayersOnTheBoard] = React.useState<JSX.Element[]>([]);
     const [isPlayerOnTheBoard, setIsPlayerOnTheBoard] = React.useState(false)
-
-
-
-    // const docRef = doc(db, "tenziesscore", "SF")
-    // const docSnap = await getDoc(docRef)
 
     async function addNewPlayer() {
         const newPlayer = {
@@ -47,23 +41,22 @@ function TenziesWin({onUpdateTenzies, clickCount}: any) {
     React.useEffect(()=>{
         const unsubscribe = onSnapshot(usersCollection, function(snapshot){
             console.log("changed")
-             const usersArray = snapshot.docs.map(user=>({
-                ...user.data(),
-                id: user.id
+             const usersArray = snapshot.docs.map(player=>({
+                ...player.data(),
+                id: player.id,
+                name: player.data().name,
+                score: player.data().score,
+                date: player.data().date,
              }))
-             console.log(usersArray[0].name)
+             usersArray.sort((a, b) => b.score - a.score);
+             const playersByScore: JSX.Element[] = []
+             usersArray.forEach(
+                player => playersByScore.push(<li>{player.name} {player.score}</li>))
 
-             const players: string[] = []
-             usersArray.forEach(player => players.push(`name: ${player.name} score: ${player.score} date: ${player.date}`))
-
-             setplayersOnTheBoard(players)
+            setPlayersOnTheBoard(playersByScore)
         })
         return unsubscribe
     }, [])
-
-    console.log(usersCollection)
-
-
 
 
     return (
@@ -78,8 +71,11 @@ function TenziesWin({onUpdateTenzies, clickCount}: any) {
                     <input type="text" id="name" value={playerName} onChange={handlePlayerName} />
                     <button id="players-board__button" onClick={addNewPlayer}>save</button>
                 </div>}
-                <h2>Users that played:</h2>
-                {playersOnTheBoard}
+                <h2>TOP 10</h2>
+                <ol>
+                    {playersOnTheBoard}
+                </ol>
+
             </div>
         </>
     )
