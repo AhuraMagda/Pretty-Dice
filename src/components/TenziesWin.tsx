@@ -3,11 +3,11 @@ import React, { ChangeEvent } from "react";
 import { addDoc, onSnapshot } from 'firebase/firestore'
 import { usersCollection } from "../firebase"
 
-function TenziesWin({onUpdateTenzies, clickCount, onResetClickCount}: any) {
+function TenziesWin({onUpdateTenzies, clickCount, onUpdateClickCount}: any) {
 
     const newGame = () => {
         onUpdateTenzies(false)
-        onResetClickCount()
+        onUpdateClickCount(0)
     }
 
     const [playerName, setPlayerName] = React.useState("")

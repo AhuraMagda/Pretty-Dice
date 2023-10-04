@@ -4,9 +4,8 @@
 import D6 from "./D6";
 import React from "react";
 
-console.log("tenzies play reredners")
 
-function TenziesPlay({onUpdateTenzies}: any) {
+function TenziesPlay({onUpdateTenzies, onUpdateClickCount}: any) {
     const [sides, setSides] = React.useState(["0", "1", "2", "3", "4", "5", "6", "7"])
 
     const handleSideChange = (newSide: string, id: number) => {
@@ -32,7 +31,21 @@ function TenziesPlay({onUpdateTenzies}: any) {
         return () => clearTimeout(timeoutId)
     }, [sides])
 
-    
+    const [count, setCount] = React.useState(0)
+
+    onUpdateClickCount(count)
+
+    React.useEffect(() => {
+        const clickHandler = () => {
+            setCount(prevCount => prevCount + 1)
+        }
+        const diceToClick = document.querySelectorAll(".dice");
+        diceToClick.forEach((die) => die.addEventListener("click", clickHandler));
+
+        return () => {
+            diceToClick.forEach((die) => die.removeEventListener("click", clickHandler));
+          }
+    }, []);
 
     return (
         <>
