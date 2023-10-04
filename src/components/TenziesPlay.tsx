@@ -4,6 +4,8 @@
 import D6 from "./D6";
 import React from "react";
 
+console.log("tenzies play reredners")
+
 function TenziesPlay({onUpdateTenzies}: any) {
     const [sides, setSides] = React.useState(["0", "1", "2", "3", "4", "5", "6", "7"])
 

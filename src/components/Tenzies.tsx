@@ -6,13 +6,19 @@ import TenziesWin from "./TenziesWin";
 import TenziesPlay from "./TenziesPlay";
 
 function Tenzies() {
-    const [tenzies, setTenzies] = React.useState(true) 
+    console.log("tenzies rendered")
+    const [tenzies, setTenzies] = React.useState(false) 
 
     function updateTenzies(value: boolean) {
         setTenzies(value)
+        console.log("upd")
     }
-
+    
     const [clickCount, setClickCount] = React.useState(0)
+
+    function resetClickCount() {
+        setClickCount(0)
+    }
 
     React.useEffect(() => {
         const clickHandler = () => {
@@ -20,6 +26,10 @@ function Tenzies() {
         }
         const diceToClick = document.querySelectorAll(".dice");
         diceToClick.forEach((die) => die.addEventListener("click", clickHandler));
+
+        return () => {
+            diceToClick.forEach((die) => die.removeEventListener("click", clickHandler));
+          }
     }, []);
     
 
@@ -28,7 +38,7 @@ function Tenzies() {
             <h1>Tenzies</h1>
             <h2>Your moves: {clickCount}</h2>
             {!tenzies && <TenziesPlay onUpdateTenzies={updateTenzies}/>}
-            {tenzies && <TenziesWin onUpdateTenzies={updateTenzies} clickCount={clickCount}/>} 
+            {tenzies && <TenziesWin onUpdateTenzies={updateTenzies} clickCount={clickCount} onResetClickCount={resetClickCount}/>} 
         </div>
     )
 }

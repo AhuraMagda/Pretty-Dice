@@ -9,7 +9,7 @@ type D6Props = {
 }
 
 function D6(props: D6Props) {
-    // console.log("D6 Component")
+    console.log("D6 Component")
     const sides = ['show-5', 'show-6', 'show-4', 'show-3', 'show-1', 'show-2']
 
     const [currentSide, setCurrentSide] = React.useState(sides[Math.floor(Math.random()*sides.length)]);    

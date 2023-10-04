@@ -3,12 +3,11 @@ import React, { ChangeEvent } from "react";
 import { addDoc, onSnapshot } from 'firebase/firestore'
 import { usersCollection } from "../firebase"
 
-function TenziesWin({onUpdateTenzies, clickCount}: any) {
+function TenziesWin({onUpdateTenzies, clickCount, onResetClickCount}: any) {
 
     const newGame = () => {
-        const diceToClick = document.querySelectorAll(".dice")
-        diceToClick.forEach(die => (die as HTMLElement).click())
         onUpdateTenzies(false)
+        onResetClickCount()
     }
 
     const [playerName, setPlayerName] = React.useState("")
@@ -40,7 +39,6 @@ function TenziesWin({onUpdateTenzies, clickCount}: any) {
 
     React.useEffect(()=>{
         const unsubscribe = onSnapshot(usersCollection, function(snapshot){
-            console.log("changed")
              const usersArray = snapshot.docs.map(player=>({
                 ...player.data(),
                 id: player.id,
@@ -48,10 +46,10 @@ function TenziesWin({onUpdateTenzies, clickCount}: any) {
                 score: player.data().score,
                 date: player.data().date,
              }))
-             usersArray.sort((a, b) => b.score - a.score);
+             usersArray.sort((a, b) => a.score - b.score);
              const playersByScore: JSX.Element[] = []
              usersArray.forEach(
-                player => playersByScore.push(<li>{player.name} {player.score}</li>))
+                player => playersByScore.length <= 9 && playersByScore.push(<li key={player.id}>{player.name} {player.score}</li>))
 
             setPlayersOnTheBoard(playersByScore)
         })
