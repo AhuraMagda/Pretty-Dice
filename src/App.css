@@ -25,6 +25,7 @@ main {
   align-items: center;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
+  padding: 40px;
 }
 
 .buttons-container {
