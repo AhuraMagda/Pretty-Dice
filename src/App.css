@@ -31,7 +31,6 @@ main {
   display: flex;
 }
 
-
 @media screen and (min-width: 350px) {
   .dice-container {
     grid-template-columns: repeat(2, 1fr);
@@ -45,3 +44,15 @@ main {
   }
 }
 
+.dice-container-one-die {
+  grid-template-columns: 1fr;
+}
+
+.dice-container-two-die {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
