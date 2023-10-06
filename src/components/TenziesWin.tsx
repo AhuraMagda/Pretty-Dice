@@ -2,8 +2,10 @@
 import React, { ChangeEvent } from "react";
 import { addDoc, onSnapshot } from 'firebase/firestore'
 import { usersCollection } from "../firebase"
+import { TenziesProps } from "./Tenzies";
 
-function TenziesWin({onUpdateTenzies, clickCount, onUpdateClickCount}: any) {
+
+function TenziesWin({onUpdateTenzies, clickCount, onUpdateClickCount}: TenziesProps) {
 
     const newGame = () => {
         onUpdateTenzies(false)

@@ -1,9 +1,14 @@
 
 import "./Tenzies.css"
 import React from "react";
-
 import TenziesWin from "./TenziesWin";
 import TenziesPlay from "./TenziesPlay";
+
+interface TenziesProps {
+    onUpdateTenzies: (value: boolean) => void,
+    clickCount?: number,
+    onUpdateClickCount: (value: number) => void,
+}
 
 function Tenzies() {
     const [tenzies, setTenzies] = React.useState(false) 
@@ -15,7 +20,7 @@ function Tenzies() {
     const [clickCount, setClickCount] = React.useState(0)
 
     function updateClickCount(number: number) {
-        setClickCount(number)
+        setClickCount(number ? (prev => prev + number) : 0)
     }
 
 
@@ -30,3 +35,4 @@ function Tenzies() {
 }
 
 export default Tenzies;
+export type { TenziesProps }
