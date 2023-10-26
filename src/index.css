@@ -15,9 +15,11 @@
 a {
   font-weight: 500;
   color: #646cff;
+  text-decoration: none;
 }
 a:hover {
-  color: rgb(131, 5, 5);
+  color: #252caf;
+  text-decoration: underline;
 }
 
 body {
