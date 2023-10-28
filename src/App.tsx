@@ -11,7 +11,8 @@ const activeStyle = {
   textDecoration: "underline"
 }
 
-const customStyle = ({ isActive }: { isActive: boolean }) =>
+// fix this later
+const customStyle: any = ({ isActive }: { isActive: boolean }) =>
 isActive ? activeStyle : null;
 
   return (
