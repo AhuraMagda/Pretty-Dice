@@ -11,8 +11,8 @@ const activeStyle = {
   textDecoration: "underline"
 }
 
-const customStyle = ({ isActive }: { isActive: boolean }) =>
-isActive ? activeStyle : null;
+// fix this later
+const customStyle: any = ({ isActive }: { isActive: boolean }) => isActive ? activeStyle : "";
 
   return (
     <>
@@ -25,7 +25,7 @@ isActive ? activeStyle : null;
             <Route path="/tenzies" element={<Tenzies />} />
           </Routes>
         </BrowserRouter>
-      </main>
+      </main>,
       <Footer />
     </>
 
