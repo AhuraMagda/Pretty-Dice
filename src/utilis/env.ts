@@ -12,4 +12,4 @@ export {
   MESSAGING_SENDER_ID,
   APP_ID,
   MEASUREMENT_ID,
-}
+};
