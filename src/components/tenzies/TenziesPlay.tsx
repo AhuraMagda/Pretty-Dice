@@ -1,9 +1,18 @@
-import D6 from "../d6/D6";
 import React from "react";
-import { TenziesProps } from "./Tenzies";
+import { TenziesProps } from "../../types/types";
+import { makeNewDiceBoard } from "./helpers/makeNewDiceBoard";
+import { checkIfAllSame } from "./helpers/checkIfAllSame";
+import {
+  addEventListnerToAll,
+  removeEventListnersFromAll,
+} from "./helpers/addRemoveEvents";
+import { updateSidesOfAllDice } from "./helpers/updateSidesOfAllDice";
 
-function TenziesPlay({ onUpdateTenzies, onUpdateClickCount }: TenziesProps) {
-  const [sides, setSides] = React.useState([
+export default function TenziesPlay({
+  onUpdateTenzies,
+  onUpdateClickCount,
+}: TenziesProps) {
+  const [sidesOfAllDice, setSidesOfAllDice] = React.useState([
     "0",
     "1",
     "2",
@@ -15,49 +24,38 @@ function TenziesPlay({ onUpdateTenzies, onUpdateClickCount }: TenziesProps) {
   ]);
 
   const handleSideChange = (newSide: string, id: number) => {
-    setSides((prevSides) =>
-      prevSides.map((side, index) => (index === id ? newSide : side))
-    );
+    setSidesOfAllDice((prevSides) => {
+      return updateSidesOfAllDice(prevSides, id, newSide);
+    });
   };
 
-  const makeNewDiceBoard = () => {
-    const randomDiceArray = [];
-    for (let i = 0; i < 8; i++) {
-      randomDiceArray.push(<D6 key={i} id={i} changeSide={handleSideChange} />);
-    }
-    return randomDiceArray;
-  };
-
-  const allTheDice = makeNewDiceBoard();
+  const displayedDice = makeNewDiceBoard(handleSideChange);
 
   React.useEffect(() => {
     const timeoutId = setTimeout(() => {
-      const allSame = sides.every((side) => side === sides[0]);
+      const allSame: boolean = checkIfAllSame(sidesOfAllDice);
       allSame && onUpdateTenzies(true);
     }, 1000);
     return () => clearTimeout(timeoutId);
-  }, [sides]);
+  }, [sidesOfAllDice]);
 
   React.useEffect(() => {
     const clickHandler = () => {
       onUpdateClickCount(1);
     };
-    const diceToClick = document.querySelectorAll(".dice");
-    diceToClick.forEach((die) => die.addEventListener("click", clickHandler));
+    const diceOnTheScreen: NodeListOf<HTMLDivElement> =
+      document.querySelectorAll(".dice");
+    addEventListnerToAll(diceOnTheScreen, clickHandler, "click");
 
     return () => {
-      diceToClick.forEach((die) =>
-        die.removeEventListener("click", clickHandler)
-      );
+      removeEventListnersFromAll(diceOnTheScreen, clickHandler, "click");
     };
   }, []);
 
   return (
     <>
       <p>Click on the die untill all the dies are the same</p>
-      <div className="dice-container">{allTheDice}</div>
+      <div className="dice-container">{displayedDice}</div>
     </>
   );
 }
-
-export default TenziesPlay;

@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from "react";
 import { addDoc, onSnapshot } from "firebase/firestore";
 import { usersCollection } from "../../firebase";
-import { TenziesProps } from "./Tenzies";
+import { TenziesProps } from "../../types/types";
 
 function TenziesWin({
   onUpdateTenzies,

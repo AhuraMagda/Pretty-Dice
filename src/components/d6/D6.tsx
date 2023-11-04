@@ -4,7 +4,7 @@ import { rollTheDie } from "./helpers/rollTheDie";
 import { getRandom } from "./helpers/getRandom";
 import { useState, useEffect } from "react";
 
-export default function D6(props: D6Props) {
+export default function D6({changeSide, id}: D6Props) {
   const sides = ["show-5", "show-6", "show-4", "show-3", "show-1", "show-2"];
 
   const [currentSide, setCurrentSide] = useState(sides[getRandom(sides)]);
@@ -21,7 +21,7 @@ export default function D6(props: D6Props) {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      props.changeSide && props.changeSide(currentSide, props.id);
+      changeSide && changeSide(currentSide, id);
     }, 300);
     return () => clearTimeout(timeoutId);
   }, [currentSide]);
@@ -29,7 +29,7 @@ export default function D6(props: D6Props) {
   return (
     <div
       className={`dice ${currentSide}`}
-      id={props.id.toString()}
+      id={id.toString()}
       onClick={() => {
         rollTheDie(changeCurrentSide);
       }}
