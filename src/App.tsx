@@ -1,26 +1,28 @@
-
-import './App.css'
-import RollDice from './components/RollDice'
-import Tenzies from './components/Tenzies'
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom"
-import Footer from './components/Footer'
+import "./App.css";
+import RollDice from "./components/rollDice/RollDice";
+import Tenzies from "./components/tenzies/Tenzies";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
+  const activeStyle = {
+    textDecoration: "underline",
+  };
 
-const activeStyle = {
-  textDecoration: "underline"
-}
-
-// fix this later
-const customStyle: any = ({ isActive }: { isActive: boolean }) =>
-isActive ? activeStyle : null;
+  // fix this later
+  const customStyle: any = ({ isActive }: { isActive: boolean }) =>
+    isActive ? activeStyle : null;
 
   return (
     <>
       <main>
         <BrowserRouter>
-        <NavLink style={customStyle} to="/">Roll Dice</NavLink>
-        <NavLink style={customStyle} to="/tenzies">Tenzies</NavLink>
+          <NavLink style={customStyle} to="/">
+            Roll Dice
+          </NavLink>
+          <NavLink style={customStyle} to="/tenzies">
+            Tenzies
+          </NavLink>
           <Routes>
             <Route path="/" element={<RollDice />} />
             <Route path="/tenzies" element={<Tenzies />} />
@@ -29,9 +31,7 @@ isActive ? activeStyle : null;
       </main>
       <Footer />
     </>
-
-  )
+  );
 }
 
-export default App
-
+export default App;
