@@ -4,3 +4,8 @@ export type D6Props = {
     isHeld?: boolean,
     changeSide?: (newSide: string, id: number) => void
 }
+
+export type RollDiceButtonsProps = {
+    addDie: () => void,
+    deleteDie: () => void
+  }
