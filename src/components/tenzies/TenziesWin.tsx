@@ -6,7 +6,7 @@ import { startNewGame } from "./helpers/startNewGame";
 import { createDate } from "./helpers/createDate";
 import { displayTop10players } from "./helpers/displayTop10players";
 import { usersArrayProps } from "../../types/types";
-
+import TenziesWinnersBoard from "./TenziesWinnersBoard";
 
 function TenziesWin({
   onUpdateTenzies,
@@ -70,35 +70,15 @@ function TenziesWin({
         New Game
       </button>
 
-      <div className="players-board">
-        {!isPlayerOnTheBoard && (
-          <div>
-            <label htmlFor="name">Name: </label>
-            <input
-              type="text"
-              id="name"
-              value={playerName}
-              onChange={handlePlayerName}
-            />
-            <button id="players-board__button" onClick={addNewPlayer}>
-              save
-            </button>
-          </div>
-        )}
-        <h2>TOP 10</h2>
-        <table className="players-board__table">
-          <thead>
-            <tr>
-              <td>NAME</td>
-              <td>SCORE</td>
-              <td>DATE</td>
-            </tr>
-          </thead>
-          <tbody>
-            {playersOnTheBoard}
-          </tbody>
-        </table>
-      </div>
+      <TenziesWinnersBoard
+        isPlayerOnTheBoard={isPlayerOnTheBoard}
+        playerName = {playerName}
+        handlePlayerName = {handlePlayerName}
+        addNewPlayer = {addNewPlayer}
+      >
+        {playersOnTheBoard}
+      </TenziesWinnersBoard>
+
     </>
   );
 }

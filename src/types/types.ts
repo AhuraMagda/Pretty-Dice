@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 export type D6Props = {
   id: number;
   key: number;
@@ -22,4 +24,12 @@ export type usersArrayProps = {
   name: string,
   score: number,
   date: Date
+}
+
+export interface TenziesWinnersBoardProps {
+    isPlayerOnTheBoard: boolean,
+    playerName: string,
+    handlePlayerName: (event: ChangeEvent<HTMLInputElement>)=>void,
+    addNewPlayer: ()=> void,
+    children: JSX.Element[]
 }
