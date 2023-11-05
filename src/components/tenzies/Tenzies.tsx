@@ -4,7 +4,7 @@ import TenziesWin from "./TenziesWin";
 import TenziesPlay from "./TenziesPlay";
 
 export default function Tenzies() {
-  const [tenzies, setTenzies] = React.useState<boolean>(true);
+  const [tenzies, setTenzies] = React.useState<boolean>(false);
 
   function updateTenzies(value: boolean) {
     setTenzies(value);
