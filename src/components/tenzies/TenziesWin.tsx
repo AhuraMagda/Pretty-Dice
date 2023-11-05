@@ -4,6 +4,9 @@ import { usersCollection } from "../../firebase";
 import { TenziesProps } from "../../types/types";
 import { startNewGame } from "./helpers/startNewGame";
 import { createDate } from "./helpers/createDate";
+import { displayTop10players } from "./helpers/displayTop10players";
+import { usersArrayProps } from "../../types/types";
+
 
 function TenziesWin({
   onUpdateTenzies,
@@ -42,24 +45,17 @@ function TenziesWin({
   React.useEffect(() => {
     const unsubscribe = onSnapshot(usersCollection, function (snapshot) {
       //map out i reszta
-      const usersArray = snapshot.docs.map((player) => ({
+      const usersArray: usersArrayProps[] = snapshot.docs.map((player) => ({
         ...player.data(),
         id: player.id,
         name: player.data().name,
         score: player.data().score,
         date: player.data().date,
       }));
+
       usersArray.sort((a, b) => a.score - b.score);
-      const playersByScore: JSX.Element[] = [];
-      usersArray.forEach(
-        (player) =>
-          playersByScore.length <= 9 &&
-          playersByScore.push(
-            <li key={player.id}>
-              {`${player.name} - ${player.score} - ${player.date}`}
-            </li>
-          )
-      );
+
+      const playersByScore: JSX.Element[] = displayTop10players(usersArray)
 
       setPlayersOnTheBoard(playersByScore);
     });

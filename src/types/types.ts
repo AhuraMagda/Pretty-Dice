@@ -15,3 +15,11 @@ export interface TenziesProps {
   clickCount?: number;
   onUpdateClickCount: (value: number) => void;
 }
+
+
+export type usersArrayProps = {
+  id: string,
+  name: string,
+  score: number,
+  date: Date
+}
