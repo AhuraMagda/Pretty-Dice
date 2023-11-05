@@ -1,9 +1,25 @@
-
+.tenzies h2 {
+    margin: 5px;
+}
 
 .players-board {
     border: 1px solid black;
     padding: 10px 30px;
+    margin: 20px 0px;
 }
+
+.players-board__table {
+    width: 100%;
+}
+
+.players-board__table td {
+    width: 30%;
+}
+
+.players-board__table thead td {
+    font-weight: 600;
+}
+
 
 input {
     border-radius: 8px;

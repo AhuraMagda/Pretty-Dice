@@ -86,7 +86,18 @@ function TenziesWin({
           </div>
         )}
         <h2>TOP 10</h2>
-        <ol>{playersOnTheBoard}</ol>
+        <table className="players-board__table">
+          <thead>
+            <tr>
+              <td>NAME</td>
+              <td>SCORE</td>
+              <td>DATE</td>
+            </tr>
+          </thead>
+          <tbody>
+            {playersOnTheBoard}
+          </tbody>
+        </table>
       </div>
     </>
   );

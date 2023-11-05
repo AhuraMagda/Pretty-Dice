@@ -8,9 +8,11 @@ export const displayTop10players = (usersArray: usersArrayProps[]) => {
       (player) =>
         playersByScore.length <= 9 &&
         playersByScore.push(
-          <li key={player.id}>
-            {`${player.name} - ${player.score} - ${player.date}`}
-          </li>
+          <tr key={player.id}>
+            <td>{player.name}</td>
+            <td>{player.score}</td>
+            <td>{`${player.date}`}</td>
+          </tr>
         )
     );
 
