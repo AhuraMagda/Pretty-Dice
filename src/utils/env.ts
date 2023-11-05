@@ -1,9 +1,9 @@
-const API_KEY = import.meta.env.REACT_APP_API_KEY;
-const AUTH_DOMAIN = import.meta.env.REACT_APP_AUTH_DOMAIN;
-const PROJECT_ID = import.meta.env.REACT_APP_PROJECT_ID;
-const STORAGE_BUCKET = import.meta.env.REACT_APP_STORAGE_BUCKET;
-const MESSAGING_SENDER_ID = import.meta.env.REACT_APP_MESSAGING_SENDER_ID;
-const APP_ID = import.meta.env.REACT_APP_APP_ID;
-const MEASUREMENT_ID = import.meta.env.REACT_APP_MEASUREMENT_ID;
+const API_KEY = import.meta.env.VITE_API_KEY;
+const AUTH_DOMAIN = import.meta.env.VITE_AUTH_DOMAIN;
+const PROJECT_ID = import.meta.env.VITE_PROJECT_ID;
+const STORAGE_BUCKET = import.meta.env.VITE_STORAGE_BUCKET;
+const MESSAGING_SENDER_ID = import.meta.env.VITE_MESSAGING_SENDER_ID;
+const APP_ID = import.meta.env.VITE_APP_ID;
+const MEASUREMENT_ID = import.meta.env.VITE_MEASUREMENT_ID;
 
 export { API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID, MEASUREMENT_ID }
