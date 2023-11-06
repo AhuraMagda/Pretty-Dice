@@ -1,16 +1,16 @@
 import React from "react";
-import D6 from "../d6/D6";
+import DiceCube from "../d6/DiceCube";
 import "./RollDice.css";
 
 import RollDiceButtons from "./RollDiceButtons";
 
 function RollDice() {
-  const [allTheDice, setAllTheDice] = React.useState([<D6 key={0} id={0} />]);
+  const [allTheDice, setAllTheDice] = React.useState([<DiceCube key={0} id={0} />]);
 
   const addDie = () => {
     setAllTheDice((prevDice) => [
       ...prevDice,
-      <D6 id={prevDice.length} key={prevDice.length} />,
+      <DiceCube id={prevDice.length} key={prevDice.length} />,
     ]);
   };
 
