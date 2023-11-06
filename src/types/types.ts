@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 
-export type D6Props = {
+export type DiceCubeProps = {
   id: number;
   key: number;
   isHeld?: boolean;
