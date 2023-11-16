@@ -8,6 +8,7 @@ import { usersArrayProps } from "../../types/types";
 import TenziesWinnersBoard from "./TenziesWinnersBoard";
 import { getAndSortUsersArray } from "./helpers/getAndSortUsersArray";
 import { format } from "date-fns";
+import { FORMAT_DATE_WITH_DOTS } from "../../utils/formatDates"
 
 export default function TenziesWin({
   onUpdateTenzies,
@@ -26,8 +27,7 @@ export default function TenziesWin({
   >([]);
   const [isPlayerOnTheBoard, setIsPlayerOnTheBoard] = React.useState(false);
 
-  const date = new Date();
-  let currentDate = format(date, "dd.MM.yyyy");
+  let currentDate = format(new Date(), FORMAT_DATE_WITH_DOTS);
 
   async function addNewPlayer() {
     const newPlayer = {
