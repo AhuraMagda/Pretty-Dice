@@ -17,4 +17,7 @@ describe("checkIfAllSame", () => {
         // Assert 
         expect(result).toBe(false)
     })
+    // test for an empty array
+    // test with "1"
+    // "aa"
 })

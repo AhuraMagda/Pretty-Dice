@@ -17,4 +17,12 @@ describe("getRandom", () => {
     // Assert
     expect(results.every(result => anArray.includes(result))).toBe(true);
   });
+  it("", () => {
+    // Arrange
+    const emptyArray: string[] = [];
+    // Act
+    const result = getRandom(emptyArray);
+    // Assert
+    expect(result).toBe(undefined)
+  })
 });
