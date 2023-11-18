@@ -4,7 +4,7 @@ import { usersCollection } from "../../firebase";
 import { TenziesProps } from "../../types/types";
 import { startNewGame } from "./helpers/startNewGame";
 import { displayTop10players } from "./helpers/displayTop10players";
-import { usersArrayProps } from "../../types/types";
+import { UsersArrayProps } from "../../types/types";
 import TenziesWinnersBoard from "./TenziesWinnersBoard";
 import { getAndSortUsersArray } from "./helpers/getAndSortUsersArray";
 import { format } from "date-fns";
@@ -41,7 +41,7 @@ export default function TenziesWin({
 
   React.useEffect(() => {
     const unsubscribe = onSnapshot(usersCollection, function (snapshot) {
-      const usersArray: usersArrayProps[] = getAndSortUsersArray(snapshot);
+      const usersArray: UsersArrayProps[] = getAndSortUsersArray(snapshot);
       const playersByScore: JSX.Element[] = displayTop10players(usersArray);
       setPlayersOnTheBoard(playersByScore);
     });

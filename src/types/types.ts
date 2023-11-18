@@ -19,7 +19,7 @@ export interface TenziesProps {
 }
 
 
-export type usersArrayProps = {
+export type UsersArrayProps = {
   id: string,
   name: string,
   score: number,
