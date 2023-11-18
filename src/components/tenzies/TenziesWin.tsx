@@ -27,7 +27,7 @@ export default function TenziesWin({
   >([]);
   const [isPlayerOnTheBoard, setIsPlayerOnTheBoard] = React.useState(false);
 
-  let currentDate = format(new Date(), FORMAT_DATE_WITH_DOTS);
+  const currentDate = format(new Date(), FORMAT_DATE_WITH_DOTS);
 
   async function addNewPlayer() {
     const newPlayer = {
