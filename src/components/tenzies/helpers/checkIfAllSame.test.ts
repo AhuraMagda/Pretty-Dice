@@ -17,4 +17,20 @@ describe("checkIfAllSame", () => {
         // Assert 
         expect(result).toBe(false)
     })
-})
+    test("returns true with more complex strings", () => {
+        // Arrange 
+        const input = ["string1", "string1", "string1", "string1"]
+        // Act
+        const result = checkIfAllSame(input)
+        // Assert 
+        expect(result).toBe(true)
+    })
+    test("returns true with empty array", () => {
+        // Arrange 
+        const input: string[] = [];
+        // Act
+        const result = checkIfAllSame(input)
+        // Assert 
+        expect(result).toBe(true)
+    })
+});
