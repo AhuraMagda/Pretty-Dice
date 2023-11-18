@@ -17,7 +17,7 @@ describe("getRandom", () => {
     // Assert
     expect(results.every(result => anArray.includes(result))).toBe(true);
   });
-  it("", () => {
+  it("returns undefined with empty string", () => {
     // Arrange
     const emptyArray: string[] = [];
     // Act
