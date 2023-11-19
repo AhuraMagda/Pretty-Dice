@@ -7,6 +7,7 @@ An application that uses CSS 3D dice with two options:
 - React - props, state, debouncing, router
 - TypeScript
 - Firebase
+- Jest for Unit Testing
 
 ## Links
 [Pretty Dice Netlify](http://pretty-dice.netlify.app)
