@@ -1,6 +1,6 @@
-import { usersArrayProps } from "../../../types/types";
+import { UsersArrayProps } from "../../../types/types";
 
-export const displayTop10players = (usersArray: usersArrayProps[]) => {
+export const displayTop10players = (usersArray: UsersArrayProps[]) => {
   const playersByScore: JSX.Element[] = [];
 
   usersArray.forEach(

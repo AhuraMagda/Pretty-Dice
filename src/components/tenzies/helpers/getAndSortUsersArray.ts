@@ -1,8 +1,8 @@
 import { QuerySnapshot } from "firebase/firestore";
-import { usersArrayProps } from "../../../types/types";
+import { UsersArrayProps } from "../../../types/types";
 
 export const getAndSortUsersArray = (snapshot: QuerySnapshot) => {
-  const usersArray: usersArrayProps[] = snapshot.docs.map((player) => ({
+  const usersArray: UsersArrayProps[] = snapshot.docs.map((player) => ({
     ...player.data(),
     id: player.id,
     name: player.data().name,

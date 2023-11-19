@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1700326857052" clover="3.2.0">
+  <project timestamp="1700326857053" name="All files">
+    <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3" elements="7" coveredelements="7" complexity="0" loc="4" ncloc="4" packages="2" files="2" classes="2"/>
+    <package name="d6.helpers">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="getRandom.ts" path="C:\Users\Magda\Documents\GitHub\Pretty-Dice\src\components\d6\helpers\getRandom.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="102" type="stmt"/>
+      </file>
+    </package>
+    <package name="tenzies.helpers">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="checkIfAllSame.ts" path="C:\Users\Magda\Documents\GitHub\Pretty-Dice\src\components\tenzies\helpers\checkIfAllSame.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="9" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
