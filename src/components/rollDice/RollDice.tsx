@@ -18,7 +18,7 @@ function RollDice() {
     setAllTheDice((prevDice) => prevDice.slice(0, -1));
   };
 
-  let diceClass = `dice-container ${
+  const diceClass = `dice-container ${
     allTheDice.length === 1
       ? "dice-container-one-die"
       : allTheDice.length === 2
